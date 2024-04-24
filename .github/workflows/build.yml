@@ -31,4 +31,4 @@ jobs:
         with:
            tag_name: ${{ github.ref_name }}
            files: |
-               target/release/webdav-server
+               build/target/release/webdav-server
