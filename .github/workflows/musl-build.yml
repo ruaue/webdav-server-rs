@@ -11,8 +11,8 @@ jobs:
       - id: 'compile'
         uses: rhysnewell/rust-cargo-musl-action@v0.1.20
         with:
-         command: 'build --release'
-         flags: '--all-features'
+         command: 'build'
+         flags: '--release --all-features'
       
       - name: ls 
         run: |
