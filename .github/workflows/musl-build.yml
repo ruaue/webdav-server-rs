@@ -8,10 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build static
-        uses:  stevenleadbeater/rust-musl-builder@master
-      - run:
-          cargo build --release --target=x86_64-unknown-linux-musl
+      - id: 'compile'
+        uses: heroku/rust-cargo-musl-action@v1
+        with:
+         command: 'build --release --target=x86_64-unknown-linux-musl '
+         flags: '--features vendored-openssl'
+      
       - name: ls 
         run: |
          pwd
