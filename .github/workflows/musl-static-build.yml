@@ -1,4 +1,4 @@
-name: webdav-server build for musl-linux
+name: webdav-server static build for musl-linux
 permissions:
   contents: write
 on:
@@ -40,7 +40,7 @@ jobs:
         pwd
 
         cd webdav-server-rs
-        RUSTFLAGS="-C link-arg=-s" cargo build  --release   --no-default-features
+        RUSTFLAGS="-C link-arg=-s" cargo build  --target x86_64-unknown-linux-musl --release   --no-default-features --features=pam
 
         
     - name: ls 
