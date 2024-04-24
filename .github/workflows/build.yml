@@ -21,7 +21,7 @@ jobs:
         run: |
           rustup target add x86_64-unknown-linux-gnu
       - name: Build
-        run: cargo build  --release --all-features  --target x86_64-unknown-linux-gnu
+        run: cargo build  --release --all-features
       - name: ls 
         run: |
          pwd
