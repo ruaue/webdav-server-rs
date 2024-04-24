@@ -1,4 +1,4 @@
-name: Build SFA from official
+name: Build webdav-server
 on:
   workflow_dispatch:
 
