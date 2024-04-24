@@ -18,7 +18,6 @@ jobs:
       run: |
           apt-get update -y
           apt-get install git -y
-      #    apt-get install glibc-static -y
           apt-get install libpam0g-dev -y
           apt-get install libntirpc-dev -y
           
