@@ -9,7 +9,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rs/toolchain@v1
-      - run:  RUSTFLAGS='-C link-arg=-s' cargo build --release --no-default-features --features=quota --target=x86_64-unknown-linux-musl
+        with:
+          toolchain: stable
+          target: x86_64-unknown-linux-musl
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          use-cross: true
+          command: build
+          args:  RUSTFLAGS='-C link-arg=-s'
+      
       
       - name: Upload release
         uses: softprops/action-gh-release@v0.1.15
