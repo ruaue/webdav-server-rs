@@ -12,3 +12,12 @@ jobs:
         with:
           toolchain: stable
       - run: cargo build --release --no-default-features --features=quota
+      
+      - name: Upload release
+        uses: softprops/action-gh-release@v0.1.15
+        with:
+           tag_name: ${{ github.ref_name }}
+           files: |
+               target/release/webdav-server
+               draft: true
+               prerelease: true
