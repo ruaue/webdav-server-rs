@@ -8,6 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install libpam and librpc
+        run: |
+          sudo apt-get install libpam0g-dev -y
+          sudo apt-get install libntirpc-dev -y
       - id: 'compile'
         uses: rhysnewell/rust-cargo-musl-action@v0.1.20
         with:
