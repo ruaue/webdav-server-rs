@@ -11,7 +11,7 @@ jobs:
       - id: 'compile'
         uses: heroku/rust-cargo-musl-action@v1
         with:
-         command: 'build --release --target=x86_64-unknown-linux-musl '
+         command: 'build --release --target=x86_64-unknown-linux-musl'
          flags: '--features vendored-openssl'
       
       - name: ls 
