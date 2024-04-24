@@ -18,6 +18,7 @@ jobs:
     - name: git clone webdav-server-rs
       run: |
         set -eux
+        apk --update add build-base
         apk add git
         git clone   https://github.com/ruaue/webdav-server-rs
          
@@ -25,7 +26,6 @@ jobs:
     - name: install linux-pam 
       run: |
        apk add rpcgen 
-       apk add rpcgen-lib
        apk add portablexdr-dev        
        apk add linux-pam-dev
     - name: setup rust target
