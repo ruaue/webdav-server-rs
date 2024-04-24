@@ -18,7 +18,7 @@ jobs:
     - name: git clone webdav-server-rs
       run: |
         set -eux
-        apk --update add build-base
+        apk --update add build-base musl-dev
         apk add git
         git clone   https://github.com/ruaue/webdav-server-rs
          
