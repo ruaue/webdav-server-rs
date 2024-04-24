@@ -12,7 +12,10 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install musl-tools -y
-          sudo apt-get install libpam0g-dev libntirpc-dev -y
+      - name: Install libpam and librpc
+        run: |
+          sudo apt-get install libpam0g-dev -y
+          sudo apt-get install libntirpc-dev -y
 
       - name: Install rust
         run: |
