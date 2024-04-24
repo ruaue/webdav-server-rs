@@ -3,7 +3,7 @@ permissions:
   contents: write
 on:
   workflow_dispatch:
-  
+         
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,32 +14,8 @@ jobs:
       options: --privileged
       
     steps:
-
-    - name: git clone webdav-server-rs
-      run: |
-        set -eux
-        apk --update add build-base
-        apk add git
-        git clone   https://github.com/ruaue/webdav-server-rs
-         
-     name: webdav-server build for musl-linux
-permissions:
-  contents: write
-on:
-  workflow_dispatch:
-  
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    container: 
-      image: rust:alpine
-      env:
-        TZ: Asia/Shanghai
-      options: --privileged
-      
-    steps:
     - name: Install libpam and librpc
-        run: |
+      run: |
           sudo apt-get update -y
           sudo apt-get install git -y
           sudo apt-get install libpam0g-dev -y
