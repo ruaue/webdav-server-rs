@@ -13,7 +13,7 @@ jobs:
           toolchain: stable
           target: x86_64-unknown-linux-musl
           override: true
-      - run: RUSTFLAGS='-C link-arg=-s target-feature=+crt-static' cargo build --release --no-default-features --features=quota
+      - run: RUSTFLAGS='-C target-feature=+crt-static' cargo build --release --no-default-features --features=quota
       
       - name: Upload release
         uses: softprops/action-gh-release@v0.1.15
