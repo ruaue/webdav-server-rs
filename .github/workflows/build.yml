@@ -22,13 +22,13 @@ jobs:
           rustup target add x86_64-unknown-linux-gnu
       - name: Build
         run: cargo build  --release --all-features  --target x86_64-unknown-linux-gnu
-      - name: ls release
+      - name: ls 
         run: |
          pwd
-         ls target/release
+         ls ../build/release
       - name: Upload release
         uses: softprops/action-gh-release@v0.1.15
         with:
            tag_name: ${{ github.ref_name }}
            files: |
-               build/target/release/webdav-server
+               build/release/webdav-server
