@@ -1,0 +1,14 @@
+name: Build SFA from official
+on:
+  workflow_dispatch:
+
+jobs:
+  build_and_test:
+    name: Rust project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - run: cargo build --release --no-default-features --features=quota
