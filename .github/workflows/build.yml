@@ -12,6 +12,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install musl-tools -y
+          sudo apt-get install libpam0g-dev libntirpc-dev -y
 
       - name: Install rust
         run: |
