@@ -12,7 +12,7 @@ jobs:
         uses: rhysnewell/rust-cargo-musl-action@v0.1.20
         with:
          command: 'build'
-         flags: '--release --all-features'
+         flags: '--all-features'
       
       - name: ls 
         run: |
