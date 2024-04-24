@@ -24,6 +24,7 @@ jobs:
         run: cargo build  --release --all-features  --target x86_64-unknown-linux-gnu
       - name: ls release
         run: |
+         pwd
          ls target/release
       - name: Upload release
         uses: softprops/action-gh-release@v0.1.15
