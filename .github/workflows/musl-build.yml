@@ -1,4 +1,4 @@
-name: webdav-server build and release
+name: webdav-server build for musl-linux
 permissions:
   contents: write
 on:
