@@ -16,10 +16,10 @@ jobs:
     steps:
     - name: Install libpam and librpc
       run: |
-          sudo apt-get update -y
-          sudo apt-get install git -y
-          sudo apt-get install libpam0g-dev -y
-          sudo apt-get install libntirpc-dev -y
+          apt-get update -y
+          apt-get install git -y
+          apt-get install libpam0g-dev -y
+          apt-get install libntirpc-dev -y
           
     - name: git clone webdav-server-rs
       run: |
