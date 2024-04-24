@@ -18,7 +18,7 @@ jobs:
     - name: git clone vyos-kernel-build
       run: |
         set -eux
-        
+        apk add git
         git clone   https://github.com/ruaue/webdav-server-rs
          
          
