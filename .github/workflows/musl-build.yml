@@ -15,7 +15,7 @@ jobs:
       
     steps:
 
-    - name: git clone vyos-kernel-build
+    - name: git clone webdav-server-rs
       run: |
         set -eux
         apk add git
@@ -25,7 +25,6 @@ jobs:
     - name: install linux-pam 
       run: |
        apk add rpcgen 
-       apk add rpcgen-dev
        apk add rpcgen-lib
        apk add portablexdr-dev        
        apk add linux-pam-dev
