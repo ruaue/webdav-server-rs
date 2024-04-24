@@ -29,9 +29,9 @@ jobs:
        apk add portablexdr-dev       
        apk add linux-pam
        apk add linux-pam-dev
-#    - name: setup rust target
-#      run: |
-#        rustup target add x86_64-unknown-linux-musl
+    - name: setup rust target
+      run: |
+        rustup target add x86_64-unknown-linux-musl
        
     - name: build rust project 
     #  working-directory:webdav-server-rs
