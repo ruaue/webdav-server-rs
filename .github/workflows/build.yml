@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: zhxiaogg/cargo-static-build@master
-      - run: RUSTFLAGS='-C target-feature=+crt-static' cargo build --release --no-default-features --features=quota
+      - run:  cargo build --release --no-default-features --features=quota
       
       - name: Upload release
         uses: softprops/action-gh-release@v0.1.15
