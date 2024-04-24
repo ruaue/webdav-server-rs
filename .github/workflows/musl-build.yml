@@ -1,30 +1,54 @@
-name: Build webdav-server for x86_64-unknown-linux-musl
+name: webdav-server build and release
+permissions:
+  contents: write
 on:
   workflow_dispatch:
-
+  
 jobs:
-  build_and_test:
-    name: build webdav-server-rs project
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install libpam and librpc
-        run: |
-          sudo apt-get install libpam0g-dev -y
-          sudo apt-get install libntirpc-dev -y
-      - id: 'compile'
-        uses: rhysnewell/rust-cargo-musl-action@v0.1.20
-        with:
-         command: 'build'
-         flags: '--all-features'
+    container: 
+      image: rust:alpine
+      env:
+        TZ: Asia/Shanghai
+      options: --privileged
       
-      - name: ls 
-        run: |
+    steps:
+
+    - name: git clone vyos-kernel-build
+      run: |
+        set -eux
+        
+        git clone   https://github.com/ruaue/webdav-server-rs
+         
+         
+    - name: install linux-pam 
+      run: |
+       apk add rpcgen 
+       apk add rpcgen-dev
+       apk add rpcgen-lib
+       apk add portablexdr-dev        
+       apk add linux-pam-dev
+    - name: setup rust target
+      run: |
+        rustup taget  add x86_64-unknown-linux-musl
+       
+    - name: build rust project 
+    #  working-directory:webdav-server-rs
+      run: |
+        set -eux
+        pwd
+
+        cd webdav-server-rs
+        RUSTFLAGS="-C link-arg=-s" cargo build  --release --all-features 
+        
+    - name: ls 
+      run: |
          pwd
          ls target/release
-      - name: Upload release
-        uses: softprops/action-gh-release@v0.1.15
-        with:
-           tag_name: ${{ github.ref_name }}
-           files: |
-              target/release/webdav-server
+    - name: Upload release
+      uses: softprops/action-gh-release@v0.1.15
+      with:
+       tag_name: ${{ github.ref_name }}
+       files: |
+           target/release/webdav-server
